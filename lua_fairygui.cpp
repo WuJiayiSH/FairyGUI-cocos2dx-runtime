@@ -27962,6 +27962,243 @@ static int lua_register_fairygui_TextFormat(lua_State* tolua_S)
 	return 1;
 }
 
+static int lua_register_fairygui_Constants(lua_State* tolua_S)
+{
+	tolua_module(tolua_S,"UIEventType", 0);
+	tolua_beginmodule(tolua_S,"UIEventType");
+	tolua_constant(tolua_S, "Enter", static_cast<int>(fairygui::UIEventType::Enter));
+	tolua_constant(tolua_S, "Exit", static_cast<int>(fairygui::UIEventType::Exit));
+	tolua_constant(tolua_S, "Changed", static_cast<int>(fairygui::UIEventType::Changed));
+	tolua_constant(tolua_S, "Submit", static_cast<int>(fairygui::UIEventType::Submit));
+	tolua_constant(tolua_S, "TouchBegin", static_cast<int>(fairygui::UIEventType::TouchBegin));
+	tolua_constant(tolua_S, "TouchMove", static_cast<int>(fairygui::UIEventType::TouchMove));
+	tolua_constant(tolua_S, "TouchEnd", static_cast<int>(fairygui::UIEventType::TouchEnd));
+	tolua_constant(tolua_S, "Click", static_cast<int>(fairygui::UIEventType::Click));
+	tolua_constant(tolua_S, "RollOver", static_cast<int>(fairygui::UIEventType::RollOver));
+	tolua_constant(tolua_S, "RollOut", static_cast<int>(fairygui::UIEventType::RollOut));
+	tolua_constant(tolua_S, "MouseWheel", static_cast<int>(fairygui::UIEventType::MouseWheel));
+	tolua_constant(tolua_S, "RightClick", static_cast<int>(fairygui::UIEventType::RightClick));
+	tolua_constant(tolua_S, "MiddleClick", static_cast<int>(fairygui::UIEventType::MiddleClick));
+	tolua_constant(tolua_S, "PositionChange", static_cast<int>(fairygui::UIEventType::PositionChange));
+	tolua_constant(tolua_S, "SizeChange", static_cast<int>(fairygui::UIEventType::SizeChange));
+	tolua_constant(tolua_S, "KeyDown", static_cast<int>(fairygui::UIEventType::KeyDown));
+	tolua_constant(tolua_S, "KeyUp", static_cast<int>(fairygui::UIEventType::KeyUp));
+	tolua_constant(tolua_S, "Scroll", static_cast<int>(fairygui::UIEventType::Scroll));
+	tolua_constant(tolua_S, "ScrollEnd", static_cast<int>(fairygui::UIEventType::ScrollEnd));
+	tolua_constant(tolua_S, "PullDownRelease", static_cast<int>(fairygui::UIEventType::PullDownRelease));
+	tolua_constant(tolua_S, "PullUpRelease", static_cast<int>(fairygui::UIEventType::PullUpRelease));
+	tolua_constant(tolua_S, "ClickItem", static_cast<int>(fairygui::UIEventType::ClickItem));
+	tolua_constant(tolua_S, "ClickLink", static_cast<int>(fairygui::UIEventType::ClickLink));
+	tolua_constant(tolua_S, "ClickMenu", static_cast<int>(fairygui::UIEventType::ClickMenu));
+	tolua_constant(tolua_S, "RightClickItem", static_cast<int>(fairygui::UIEventType::RightClickItem));
+	tolua_constant(tolua_S, "DragStart", static_cast<int>(fairygui::UIEventType::DragStart));
+	tolua_constant(tolua_S, "DragMove", static_cast<int>(fairygui::UIEventType::DragMove));
+	tolua_constant(tolua_S, "DragEnd", static_cast<int>(fairygui::UIEventType::DragEnd));
+	tolua_constant(tolua_S, "Drop", static_cast<int>(fairygui::UIEventType::Drop));
+	tolua_constant(tolua_S, "GearStop", static_cast<int>(fairygui::UIEventType::GearStop));
+	tolua_constant(tolua_S, "OnInit", static_cast<int>(fairygui::UIEventType::OnInit));
+	tolua_constant(tolua_S, "OnShown", static_cast<int>(fairygui::UIEventType::OnShown));
+	tolua_constant(tolua_S, "OnHide", static_cast<int>(fairygui::UIEventType::OnHide));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"PackageItemType", 0);
+	tolua_beginmodule(tolua_S,"PackageItemType");
+	tolua_constant(tolua_S, "IMAGE", static_cast<int>(fairygui::PackageItemType::IMAGE));
+	tolua_constant(tolua_S, "MOVIECLIP", static_cast<int>(fairygui::PackageItemType::MOVIECLIP));
+	tolua_constant(tolua_S, "SOUND", static_cast<int>(fairygui::PackageItemType::SOUND));
+	tolua_constant(tolua_S, "COMPONENT", static_cast<int>(fairygui::PackageItemType::COMPONENT));
+	tolua_constant(tolua_S, "ATLAS", static_cast<int>(fairygui::PackageItemType::ATLAS));
+	tolua_constant(tolua_S, "FONT", static_cast<int>(fairygui::PackageItemType::FONT));
+	tolua_constant(tolua_S, "SWF", static_cast<int>(fairygui::PackageItemType::SWF));
+	tolua_constant(tolua_S, "MISC", static_cast<int>(fairygui::PackageItemType::MISC));
+	tolua_constant(tolua_S, "UNKNOWN", static_cast<int>(fairygui::PackageItemType::UNKNOWN));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"ObjectType", 0);
+	tolua_beginmodule(tolua_S,"ObjectType");
+	tolua_constant(tolua_S, "IMAGE", static_cast<int>(fairygui::ObjectType::IMAGE));
+	tolua_constant(tolua_S, "MOVIECLIP", static_cast<int>(fairygui::ObjectType::MOVIECLIP));
+	tolua_constant(tolua_S, "SWF", static_cast<int>(fairygui::ObjectType::SWF));
+	tolua_constant(tolua_S, "GRAPH", static_cast<int>(fairygui::ObjectType::GRAPH));
+	tolua_constant(tolua_S, "LOADER", static_cast<int>(fairygui::ObjectType::LOADER));
+	tolua_constant(tolua_S, "GROUP", static_cast<int>(fairygui::ObjectType::GROUP));
+	tolua_constant(tolua_S, "TEXT", static_cast<int>(fairygui::ObjectType::TEXT));
+	tolua_constant(tolua_S, "RICHTEXT", static_cast<int>(fairygui::ObjectType::RICHTEXT));
+	tolua_constant(tolua_S, "INPUTTEXT", static_cast<int>(fairygui::ObjectType::INPUTTEXT));
+	tolua_constant(tolua_S, "COMPONENT", static_cast<int>(fairygui::ObjectType::COMPONENT));
+	tolua_constant(tolua_S, "LIST", static_cast<int>(fairygui::ObjectType::LIST));
+	tolua_constant(tolua_S, "LABEL", static_cast<int>(fairygui::ObjectType::LABEL));
+	tolua_constant(tolua_S, "BUTTON", static_cast<int>(fairygui::ObjectType::BUTTON));
+	tolua_constant(tolua_S, "COMBOBOX", static_cast<int>(fairygui::ObjectType::COMBOBOX));
+	tolua_constant(tolua_S, "PROGRESSBAR", static_cast<int>(fairygui::ObjectType::PROGRESSBAR));
+	tolua_constant(tolua_S, "SLIDER", static_cast<int>(fairygui::ObjectType::SLIDER));
+	tolua_constant(tolua_S, "SCROLLBAR", static_cast<int>(fairygui::ObjectType::SCROLLBAR));
+	tolua_constant(tolua_S, "TREE", static_cast<int>(fairygui::ObjectType::TREE));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"ButtonMode", 0);
+	tolua_beginmodule(tolua_S,"ButtonMode");
+	tolua_constant(tolua_S, "COMMON", static_cast<int>(fairygui::ButtonMode::COMMON));
+	tolua_constant(tolua_S, "CHECK", static_cast<int>(fairygui::ButtonMode::CHECK));
+	tolua_constant(tolua_S, "RADIO", static_cast<int>(fairygui::ButtonMode::RADIO));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"ChildrenRenderOrder", 0);
+	tolua_beginmodule(tolua_S,"ChildrenRenderOrder");
+	tolua_constant(tolua_S, "ASCENT", static_cast<int>(fairygui::ChildrenRenderOrder::ASCENT));
+	tolua_constant(tolua_S, "DESCENT", static_cast<int>(fairygui::ChildrenRenderOrder::DESCENT));
+	tolua_constant(tolua_S, "ARCH", static_cast<int>(fairygui::ChildrenRenderOrder::ARCH));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"OverflowType", 0);
+	tolua_beginmodule(tolua_S,"OverflowType");
+	tolua_constant(tolua_S, "VISIBLE", static_cast<int>(fairygui::OverflowType::VISIBLE));
+	tolua_constant(tolua_S, "HIDDEN", static_cast<int>(fairygui::OverflowType::HIDDEN));
+	tolua_constant(tolua_S, "SCROLL", static_cast<int>(fairygui::OverflowType::SCROLL));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"ScrollType", 0);
+	tolua_beginmodule(tolua_S,"ScrollType");
+	tolua_constant(tolua_S, "HORIZONTAL", static_cast<int>(fairygui::ScrollType::HORIZONTAL));
+	tolua_constant(tolua_S, "VERTICAL", static_cast<int>(fairygui::ScrollType::VERTICAL));
+	tolua_constant(tolua_S, "BOTH", static_cast<int>(fairygui::ScrollType::BOTH));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"ScrollBarDisplayType", 0);
+	tolua_beginmodule(tolua_S,"ScrollBarDisplayType");
+	tolua_constant(tolua_S, "DEFAULT", static_cast<int>(fairygui::ScrollBarDisplayType::DEFAULT));
+	tolua_constant(tolua_S, "VISIBLE", static_cast<int>(fairygui::ScrollBarDisplayType::VISIBLE));
+	tolua_constant(tolua_S, "AUTO", static_cast<int>(fairygui::ScrollBarDisplayType::AUTO));
+	tolua_constant(tolua_S, "HIDDEN", static_cast<int>(fairygui::ScrollBarDisplayType::HIDDEN));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"LoaderFillType", 0);
+	tolua_beginmodule(tolua_S,"LoaderFillType");
+	tolua_constant(tolua_S, "NONE", static_cast<int>(fairygui::LoaderFillType::NONE));
+	tolua_constant(tolua_S, "SCALE", static_cast<int>(fairygui::LoaderFillType::SCALE));
+	tolua_constant(tolua_S, "SCALE_MATCH_HEIGHT", static_cast<int>(fairygui::LoaderFillType::SCALE_MATCH_HEIGHT));
+	tolua_constant(tolua_S, "SCALE_MATCH_WIDTH", static_cast<int>(fairygui::LoaderFillType::SCALE_MATCH_WIDTH));
+	tolua_constant(tolua_S, "SCALE_FREE", static_cast<int>(fairygui::LoaderFillType::SCALE_FREE));
+	tolua_constant(tolua_S, "SCALE_NO_BORDER", static_cast<int>(fairygui::LoaderFillType::SCALE_NO_BORDER));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"ProgressTitleType", 0);
+	tolua_beginmodule(tolua_S,"ProgressTitleType");
+	tolua_constant(tolua_S, "PERCENT", static_cast<int>(fairygui::ProgressTitleType::PERCENT));
+	tolua_constant(tolua_S, "VALUE_MAX", static_cast<int>(fairygui::ProgressTitleType::VALUE_MAX));
+	tolua_constant(tolua_S, "VALUE", static_cast<int>(fairygui::ProgressTitleType::VALUE));
+	tolua_constant(tolua_S, "MAX", static_cast<int>(fairygui::ProgressTitleType::MAX));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"ListLayoutType", 0);
+	tolua_beginmodule(tolua_S,"ListLayoutType");
+	tolua_constant(tolua_S, "SINGLE_COLUMN", static_cast<int>(fairygui::ListLayoutType::SINGLE_COLUMN));
+	tolua_constant(tolua_S, "SINGLE_ROW", static_cast<int>(fairygui::ListLayoutType::SINGLE_ROW));
+	tolua_constant(tolua_S, "FLOW_HORIZONTAL", static_cast<int>(fairygui::ListLayoutType::FLOW_HORIZONTAL));
+	tolua_constant(tolua_S, "FLOW_VERTICAL", static_cast<int>(fairygui::ListLayoutType::FLOW_VERTICAL));
+	tolua_constant(tolua_S, "PAGINATION", static_cast<int>(fairygui::ListLayoutType::PAGINATION));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"ListSelectionMode", 0);
+	tolua_beginmodule(tolua_S,"ListSelectionMode");
+	tolua_constant(tolua_S, "SINGLE", static_cast<int>(fairygui::ListSelectionMode::SINGLE));
+	tolua_constant(tolua_S, "MULTIPLE", static_cast<int>(fairygui::ListSelectionMode::MULTIPLE));
+	tolua_constant(tolua_S, "MULTIPLE_SINGLECLICK", static_cast<int>(fairygui::ListSelectionMode::MULTIPLE_SINGLECLICK));
+	tolua_constant(tolua_S, "NONE", static_cast<int>(fairygui::ListSelectionMode::NONE));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"GroupLayoutType", 0);
+	tolua_beginmodule(tolua_S,"GroupLayoutType");
+	tolua_constant(tolua_S, "NONE", static_cast<int>(fairygui::GroupLayoutType::NONE));
+	tolua_constant(tolua_S, "HORIZONTAL", static_cast<int>(fairygui::GroupLayoutType::HORIZONTAL));
+	tolua_constant(tolua_S, "VERTICAL", static_cast<int>(fairygui::GroupLayoutType::VERTICAL));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"PopupDirection", 0);
+	tolua_beginmodule(tolua_S,"PopupDirection");
+	tolua_constant(tolua_S, "AUTO", static_cast<int>(fairygui::PopupDirection::AUTO));
+	tolua_constant(tolua_S, "UP", static_cast<int>(fairygui::PopupDirection::UP));
+	tolua_constant(tolua_S, "DOWN", static_cast<int>(fairygui::PopupDirection::DOWN));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"AutoSizeType", 0);
+	tolua_beginmodule(tolua_S,"AutoSizeType");
+	tolua_constant(tolua_S, "NONE", static_cast<int>(fairygui::AutoSizeType::NONE));
+	tolua_constant(tolua_S, "BOTH", static_cast<int>(fairygui::AutoSizeType::BOTH));
+	tolua_constant(tolua_S, "HEIGHT", static_cast<int>(fairygui::AutoSizeType::HEIGHT));
+	tolua_constant(tolua_S, "SHRINK", static_cast<int>(fairygui::AutoSizeType::SHRINK));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"FlipType", 0);
+	tolua_beginmodule(tolua_S,"FlipType");
+	tolua_constant(tolua_S, "NONE", static_cast<int>(fairygui::FlipType::NONE));
+	tolua_constant(tolua_S, "HORIZONTAL", static_cast<int>(fairygui::FlipType::HORIZONTAL));
+	tolua_constant(tolua_S, "VERTICAL", static_cast<int>(fairygui::FlipType::VERTICAL));
+	tolua_constant(tolua_S, "BOTH", static_cast<int>(fairygui::FlipType::BOTH));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"TransitionActionType", 0);
+	tolua_beginmodule(tolua_S,"TransitionActionType");
+	tolua_constant(tolua_S, "XY", static_cast<int>(fairygui::TransitionActionType::XY));
+	tolua_constant(tolua_S, "Size", static_cast<int>(fairygui::TransitionActionType::Size));
+	tolua_constant(tolua_S, "Scale", static_cast<int>(fairygui::TransitionActionType::Scale));
+	tolua_constant(tolua_S, "Pivot", static_cast<int>(fairygui::TransitionActionType::Pivot));
+	tolua_constant(tolua_S, "Alpha", static_cast<int>(fairygui::TransitionActionType::Alpha));
+	tolua_constant(tolua_S, "Rotation", static_cast<int>(fairygui::TransitionActionType::Rotation));
+	tolua_constant(tolua_S, "Color", static_cast<int>(fairygui::TransitionActionType::Color));
+	tolua_constant(tolua_S, "Animation", static_cast<int>(fairygui::TransitionActionType::Animation));
+	tolua_constant(tolua_S, "Visible", static_cast<int>(fairygui::TransitionActionType::Visible));
+	tolua_constant(tolua_S, "Sound", static_cast<int>(fairygui::TransitionActionType::Sound));
+	tolua_constant(tolua_S, "Transition", static_cast<int>(fairygui::TransitionActionType::Transition));
+	tolua_constant(tolua_S, "Shake", static_cast<int>(fairygui::TransitionActionType::Shake));
+	tolua_constant(tolua_S, "ColorFilter", static_cast<int>(fairygui::TransitionActionType::ColorFilter));
+	tolua_constant(tolua_S, "Skew", static_cast<int>(fairygui::TransitionActionType::Skew));
+	tolua_constant(tolua_S, "Text", static_cast<int>(fairygui::TransitionActionType::Text));
+	tolua_constant(tolua_S, "Icon", static_cast<int>(fairygui::TransitionActionType::Icon));
+	tolua_constant(tolua_S, "Unknown", static_cast<int>(fairygui::TransitionActionType::Unknown));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"FillMethod", 0);
+	tolua_beginmodule(tolua_S,"FillMethod");
+	tolua_constant(tolua_S, "None", static_cast<int>(fairygui::FillMethod::None));
+	tolua_constant(tolua_S, "Horizontal", static_cast<int>(fairygui::FillMethod::Horizontal));
+	tolua_constant(tolua_S, "Vertical", static_cast<int>(fairygui::FillMethod::Vertical));
+	tolua_constant(tolua_S, "Radial90", static_cast<int>(fairygui::FillMethod::Radial90));
+	tolua_constant(tolua_S, "Radial180", static_cast<int>(fairygui::FillMethod::Radial180));
+	tolua_constant(tolua_S, "Radial360", static_cast<int>(fairygui::FillMethod::Radial360));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"FillOrigin", 0);
+	tolua_beginmodule(tolua_S,"FillOrigin");
+	tolua_constant(tolua_S, "Top", static_cast<int>(fairygui::FillOrigin::Top));
+	tolua_constant(tolua_S, "Bottom", static_cast<int>(fairygui::FillOrigin::Bottom));
+	tolua_constant(tolua_S, "Left", static_cast<int>(fairygui::FillOrigin::Left));
+	tolua_constant(tolua_S, "Right", static_cast<int>(fairygui::FillOrigin::Right));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"ObjectPropID", 0);
+	tolua_beginmodule(tolua_S,"ObjectPropID");
+	tolua_constant(tolua_S, "Text", static_cast<int>(fairygui::ObjectPropID::Text));
+	tolua_constant(tolua_S, "Icon", static_cast<int>(fairygui::ObjectPropID::Icon));
+	tolua_constant(tolua_S, "Color", static_cast<int>(fairygui::ObjectPropID::Color));
+	tolua_constant(tolua_S, "OutlineColor", static_cast<int>(fairygui::ObjectPropID::OutlineColor));
+	tolua_constant(tolua_S, "Playing", static_cast<int>(fairygui::ObjectPropID::Playing));
+	tolua_constant(tolua_S, "Frame", static_cast<int>(fairygui::ObjectPropID::Frame));
+	tolua_constant(tolua_S, "DeltaTime", static_cast<int>(fairygui::ObjectPropID::DeltaTime));
+	tolua_constant(tolua_S, "TimeScale", static_cast<int>(fairygui::ObjectPropID::TimeScale));
+	tolua_constant(tolua_S, "FontSize", static_cast<int>(fairygui::ObjectPropID::FontSize));
+	tolua_constant(tolua_S, "Selected", static_cast<int>(fairygui::ObjectPropID::Selected));
+	tolua_endmodule(tolua_S);
+
+	tolua_module(tolua_S,"TextFormat", 0);
+	tolua_beginmodule(tolua_S,"TextFormat");
+	tolua_constant(tolua_S, "OUTLINE", static_cast<int>(fairygui::TextFormat::OUTLINE));
+	tolua_constant(tolua_S, "SHADOW", static_cast<int>(fairygui::TextFormat::SHADOW));
+	tolua_constant(tolua_S, "GLOW", static_cast<int>(fairygui::TextFormat::GLOW));
+	tolua_endmodule(tolua_S);
+	return 1;
+}
+
 TOLUA_API int register_fairygui_manual(lua_State* tolua_S)
 {
 	lua_getglobal(tolua_S, "_G");
@@ -28012,6 +28249,7 @@ TOLUA_API int register_fairygui_manual(lua_State* tolua_S)
 		lua_register_fairygui_GTree(tolua_S);
 		lua_register_fairygui_GTreeNode(tolua_S);
 		lua_register_fairygui_TextFormat(tolua_S);
+		lua_register_fairygui_Constants(tolua_S);
 
 		tolua_endmodule(tolua_S);
 	}
