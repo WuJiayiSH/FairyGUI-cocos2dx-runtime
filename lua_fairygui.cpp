@@ -5378,6 +5378,47 @@ tolua_lerror:
 #endif
 }
 
+static int lua_fairygui_GObject_setEnabled(lua_State* tolua_S)
+{
+	int argc = 0;
+	fairygui::GObject* cobj = nullptr;
+	bool ok = true;
+
+#if COCOS2D_DEBUG >= 1
+	tolua_Error tolua_err;
+	if (!tolua_isusertype(tolua_S,1,"fairygui.GObject",0,&tolua_err)) goto tolua_lerror;
+#endif
+	cobj = (fairygui::GObject*)tolua_tousertype(tolua_S,1,0);
+#if COCOS2D_DEBUG >= 1
+	if (!cobj) {
+		tolua_error(tolua_S,"invalid 'cobj' in function 'lua_fairygui_GObject_setEnabled'", nullptr);
+		return 0;
+	}
+#endif
+
+	argc = lua_gettop(tolua_S)-1;
+	if (argc == 1) {
+		bool arg0;
+		ok &= luaval_to_boolean(tolua_S, 2,&arg0, "fairygui.GObject:setEnabled");
+		if (!ok) {
+			tolua_error(tolua_S,"invalid arguments in function 'lua_fairygui_GObject_setEnabled'", nullptr);
+			return 0;
+		}
+		cobj->setGrayed(!arg0);
+		cobj->setTouchable(arg0);
+		return 0;
+	}
+	luaL_error(tolua_S, "%s has wrong number of arguments: %d, was expecting %d \n", "fairygui.GObject:setEnabled",argc, 1);
+	return 0;
+
+#if COCOS2D_DEBUG >= 1
+tolua_lerror:
+	tolua_error(tolua_S,"#ferror in function 'lua_fairygui_GObject_setEnabled'.",&tolua_err);
+	return 0;
+#endif
+}
+
+
 static int lua_register_fairygui_GObject(lua_State* tolua_S)
 {
 	tolua_usertype(tolua_S,"fairygui.GObject");
@@ -5479,6 +5520,7 @@ static int lua_register_fairygui_GObject(lua_State* tolua_S)
 	tolua_function(tolua_S,"getTooltips",lua_fairygui_GObject_getTooltips);
 	tolua_function(tolua_S,"create", lua_fairygui_GObject_create);
 	tolua_function(tolua_S,"getDraggingObject", lua_fairygui_GObject_getDraggingObject);
+	tolua_function(tolua_S,"setEnabled",lua_fairygui_GObject_setEnabled);
 	tolua_endmodule(tolua_S);
 	std::string typeName = typeid(fairygui::GObject).name();
 	g_luaType[typeName] = "fairygui.GObject";
