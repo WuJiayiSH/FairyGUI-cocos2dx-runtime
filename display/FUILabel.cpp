@@ -214,6 +214,17 @@ bool FUILabel::setBMFontFilePath(const std::string& bmfontFilePath, const Vec2& 
     return true;
 }
 
+bool FUILabel::setBMFontFilePath(const std::string& bmfontFilePath, const Rect& imageRect, bool imageRotated, float fontSize)
+{
+    if (!setBMFontFilePath(bmfontFilePath, imageRect.origin, fontSize))
+        return false;
+
+    _bmRect = imageRect;
+    _bmRotated = imageRotated;
+
+    return true;
+}
+
 void FUILabel::setGrayed(bool value)
 {
     if (_grayed != value)
