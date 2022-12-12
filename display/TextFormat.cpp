@@ -47,6 +47,7 @@ TextFormat & TextFormat::operator=(const TextFormat & other)
         shadowBlurRadius = other.shadowBlurRadius;
         glowColor = other.glowColor;
         _hasColor = other._hasColor;
+        std::copy(std::begin(other.gradientColor), std::end(other.gradientColor), std::begin(gradientColor));
     }
     return *this;
 }

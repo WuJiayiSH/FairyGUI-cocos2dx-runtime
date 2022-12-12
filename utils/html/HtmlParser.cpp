@@ -135,8 +135,42 @@ void HtmlParser::startElement(void* /*ctx*/, const char *elementName, const char
         auto it = attrMap.find("color");
         if (it != attrMap.end())
         {
-            _format.color = (Color3B)ToolSet::hexToColor(it->second.asString().c_str());
-            _format._hasColor = true;
+            const string& color = it->second.asString();
+            const char* s = color.c_str();
+            size_t pos = color.find(',');
+            if (pos == string::npos)
+            {
+                _format.color = (Color3B)ToolSet::hexToColor(s);
+                _format._hasColor = true;
+            }
+            else
+            {
+                _format.gradientColor[0] = (Color3B)ToolSet::hexToColor(s);
+                _format.gradientColor[1] = (Color3B)ToolSet::hexToColor(s + pos + 1);
+                pos = color.find(',', pos + 1);
+                if (pos != string::npos)
+                {
+                    _format.gradientColor[2] = (Color3B)ToolSet::hexToColor(s + pos + 1);
+                    pos = color.find(',', pos + 1);
+                    if (pos != string::npos)
+                    {
+                        _format.gradientColor[3] = (Color3B)ToolSet::hexToColor(s + pos + 1);
+                    }
+                    else
+                    {
+                        _format.gradientColor[3] = _format.gradientColor[2];
+                    }
+                }
+                else
+                {
+                    _format.gradientColor[2] = _format.gradientColor[0];
+                    _format.gradientColor[3] = _format.gradientColor[1];
+                }
+
+                _format.enableEffect(TextFormat::GRADIENT);
+                _format._hasColor = true;
+                _format.color = ccColor3B::WHITE;
+            }
         }
     }
     else if (strcasecmp(elementName, "br") == 0)

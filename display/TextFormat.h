@@ -21,6 +21,7 @@ public:
     static const int OUTLINE = 1;
     static const int SHADOW = 2;
     static const int GLOW = 4;
+    static const int GRADIENT = 8;
 
     std::string face;
     float fontSize;
@@ -40,6 +41,7 @@ public:
     cocos2d::Size shadowOffset;
     int shadowBlurRadius;
     cocos2d::Color3B glowColor;
+    cocos2d::Color3B gradientColor[4];
 
     //internal use
     bool _hasColor;
