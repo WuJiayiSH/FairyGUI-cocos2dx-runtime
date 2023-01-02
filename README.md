@@ -1,4 +1,4 @@
-Another Fairygui runtime basically copied from https://github.com/u0u0/Cocos2d-Lua-Community but compatible with our cocos2d-x branch. It should also work with other v3 branches with minor changes.
+Another Fairygui runtime basically copied from https://github.com/u0u0/Cocos2d-Lua-Community. 
 
 Install in cocos2d-x project:
 
@@ -10,6 +10,8 @@ Update your CMakeLists.txt:
     include(${CMAKE_CURRENT_SOURCE_DIR}/frameworks/FairyGUI-cocos2dx-runtime/CMakeLists.txt)
     set(GAME_HEADER ${GAME_HEADER} ${FAIRYGUI_HEADER})
     set(GAME_SOURCE ${GAME_SOURCE} ${FAIRYGUI_SRC})
+
+We are using ccbind for scripting binding so the lua binder part is only compatible with https://github.com/wujiayish/Cocos2d-x. You can checkout main branch which should be compatible with cocos2d-x v3.
 
 Register lua bindings in AppDelegate.cpp(Lua specific):
 
