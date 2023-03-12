@@ -43,9 +43,11 @@ public:
     static const std::string& getVar(const std::string& key);
     static void setVar(const std::string& key, const std::string& value);
 
+    static void setStringsSource(const std::string& xml);
+
     static int _constructing;
     static const std::string URL_PREFIX;
-
+    
 private:
     bool loadPackage(ByteBuffer* buffer);
     void loadAtlas(PackageItem* item);

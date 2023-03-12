@@ -4,6 +4,7 @@
 #include "event/HitTest.h"
 #include "utils/ByteBuffer.h"
 #include "utils/ToolSet.h"
+#include "TranslationHelper.h"
 
 NS_FGUI_BEGIN
 USING_NS_CC;
@@ -860,6 +861,11 @@ void UIPackage::loadFont(PackageItem* item)
 
     delete buffer;
     item->rawData = nullptr;
+}
+
+void UIPackage::setStringsSource(const std::string& xml)
+{
+    TranslationHelper::loadFromXML(xml.c_str(), xml.size());
 }
 
 NS_FGUI_END
