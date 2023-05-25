@@ -30,121 +30,181 @@ namespace
     void fairygui_UIEventDispatcher_dispatchEvent(fairygui::UIEventDispatcher &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            argv.rval(thisv.dispatchEvent(argv.get<int>(0)));
+        {
+            std::tuple<int> args;
+            if (argv.get(args))
+                argv.rval(thisv.dispatchEvent(std::get<0>(args)));
+        }
         else if (argc == 2)
-            argv.rval(thisv.dispatchEvent(argv.get<int>(0), argv.get<cocos2d::Ref *>(1)));
+        {
+            std::tuple<int, cocos2d::Ref *> args;
+            if (argv.get(args))
+                argv.rval(thisv.dispatchEvent(std::get<0>(args), std::get<1>(args)));
+        }
         else if (argc == 3)
-            argv.rval(thisv.dispatchEvent(argv.get<int>(0), argv.get<cocos2d::Ref *>(1), argv.get<cocos2d::Value>(2)));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, cocos2d::Ref *, cocos2d::Value> args;
+            if (argv.get(args))
+                argv.rval(thisv.dispatchEvent(std::get<0>(args), std::get<1>(args), std::get<2>(args)));
+        }
     }
 
     void fairygui_UIEventDispatcher_bubbleEvent(fairygui::UIEventDispatcher &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            argv.rval(thisv.bubbleEvent(argv.get<int>(0)));
+        {
+            std::tuple<int> args;
+            if (argv.get(args))
+                argv.rval(thisv.bubbleEvent(std::get<0>(args)));
+        }
         else if (argc == 2)
-            argv.rval(thisv.bubbleEvent(argv.get<int>(0), argv.get<cocos2d::Ref *>(1)));
+        {
+            std::tuple<int, cocos2d::Ref *> args;
+            if (argv.get(args))
+                argv.rval(thisv.bubbleEvent(std::get<0>(args), std::get<1>(args)));
+        }
         else if (argc == 3)
-            argv.rval(thisv.bubbleEvent(argv.get<int>(0), argv.get<cocos2d::Ref *>(1), argv.get<cocos2d::Value>(2)));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, cocos2d::Ref *, cocos2d::Value> args;
+            if (argv.get(args))
+                argv.rval(thisv.bubbleEvent(std::get<0>(args), std::get<1>(args), std::get<2>(args)));
+        }
     }
 
     void fairygui_UIEventDispatcher_addEventListener(fairygui::UIEventDispatcher &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 2)
-            thisv.addEventListener(argv.get<int>(0), argv.get<fairygui::EventCallback>(1));
+        {
+            std::tuple<int, fairygui::EventCallback> args;
+            if (argv.get(args))
+                thisv.addEventListener(std::get<0>(args), std::get<1>(args));
+        }
         else if (argc == 3)
-            thisv.addEventListener(argv.get<int>(0), argv.get<fairygui::EventCallback>(1), fairygui::EventTag(argv.get<int>(2)));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, fairygui::EventCallback, int> args;
+            if (argv.get(args))
+                thisv.addEventListener(std::get<0>(args), std::get<1>(args), fairygui::EventTag(std::get<2>(args)));
+        }
     }
 
     void fairygui_UIEventDispatcher_removeEventListener(fairygui::UIEventDispatcher &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.removeEventListener(argv.get<int>(0));
+        {
+            std::tuple<int> args;
+            if (argv.get(args))
+                thisv.removeEventListener(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.removeEventListener(argv.get<int>(0), fairygui::EventTag(argv.get<int>(1)));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, int> args;
+            if (argv.get(args))
+                thisv.removeEventListener(std::get<0>(args), fairygui::EventTag(std::get<1>(args)));
+        }
     }
 
     void fairygui_UIEventDispatcher_hasEventListener(fairygui::UIEventDispatcher &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            argv.rval(thisv.hasEventListener(argv.get<int>(0)));
+        {
+            std::tuple<int> args;
+            if (argv.get(args))
+                argv.rval(thisv.hasEventListener(std::get<0>(args)));
+        }
         else if (argc == 2)
-            argv.rval(thisv.hasEventListener(argv.get<int>(0), fairygui::EventTag(argv.get<int>(1))));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, int> args;
+            if (argv.get(args))
+                argv.rval(thisv.hasEventListener(std::get<0>(args), fairygui::EventTag(std::get<1>(args))));
+        }
     }
 
     void fairygui_GObject_startDrag(fairygui::GObject &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.startDrag();
+        }
         else if (argc == 1)
-            thisv.startDrag(argv.get<int>(0));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int> args;
+            if (argv.get(args))
+                thisv.startDrag(std::get<0>(args));
+        }
     }
 
     void fairygui_GObject_center(fairygui::GObject &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.center();
+        }
         else if (argc == 1)
-            thisv.center(argv.get<bool>(0));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<bool> args;
+            if (argv.get(args))
+                thisv.center(std::get<0>(args));
+        }
     }
 
     void fairygui_GObject_addRelation(fairygui::GObject &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 2)
-            thisv.addRelation(argv.get<fairygui::GObject *>(0), argv.get<fairygui::RelationType>(1));
+        {
+            std::tuple<fairygui::GObject*, fairygui::RelationType> args;
+            if (argv.get(args))
+                thisv.addRelation(std::get<0>(args), std::get<1>(args));
+        }
         else if (argc == 3)
-            thisv.addRelation(argv.get<fairygui::GObject *>(0), argv.get<fairygui::RelationType>(1), argv.get<bool>(2));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<fairygui::GObject*, fairygui::RelationType, bool> args;
+            if (argv.get(args))
+                thisv.addRelation(std::get<0>(args), std::get<1>(args), std::get<2>(args));
+        }
     }
 
     void fairygui_GObject_setPivot(fairygui::GObject &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 2)
-            thisv.setPivot(argv.get<float>(0), argv.get<float>(1));
+        {
+            std::tuple<float, float> args;
+            if (argv.get(args))
+                thisv.setPivot(std::get<0>(args), std::get<1>(args));
+        }
         else if (argc == 3)
-            thisv.setPivot(argv.get<float>(0), argv.get<float>(1), argv.get<bool>(2));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<float, float, bool> args;
+            if (argv.get(args))
+                thisv.setPivot(std::get<0>(args), std::get<1>(args), std::get<2>(args));
+        }
     }
 
     void fairygui_GObject_setSize(fairygui::GObject &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 2)
-            thisv.setSize(argv.get<float>(0), argv.get<float>(1));
+        {
+            std::tuple<float, float> args;
+            if (argv.get(args))
+                thisv.setSize(std::get<0>(args), std::get<1>(args));
+        }
         else if (argc == 3)
-            thisv.setSize(argv.get<float>(0), argv.get<float>(1), argv.get<bool>(2));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<float, float, bool> args;
+            if (argv.get(args))
+                thisv.setSize(std::get<0>(args), std::get<1>(args), std::get<2>(args));
+        }
     }
 
     void fairygui_GObject_getData(fairygui::GObject &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 0)
-            argv.rval((cocos2d::Ref *)thisv.getData());
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        argv.rval((cocos2d::Ref *)thisv.getData());
     }
 
     void fairygui_GObject_setData(fairygui::GObject &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 1)
-            thisv.setData(argv.get<cocos2d::Ref *>(0));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        std::tuple<cocos2d::Ref *> args;
+        if (argv.get(args))
+            thisv.setData(std::get<0>(args));
     }
 
     // As both cocos2d::Rect and cocos2d::Vec2 are table type, glue function cannot tell which overloading function is used.
@@ -152,556 +212,771 @@ namespace
     // Since cocos2d::Rect is convertable to cocos2d::Vec2, as they all own x and y, you can take the result as a cocos2d::Vec2.
     void fairygui_GObject_localToGlobal(fairygui::GObject &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 1)
-            argv.rval(thisv.localToGlobal(argv.get<cocos2d::Rect>(0)));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        std::tuple<cocos2d::Rect> args;
+        if (argv.get(args))
+            argv.rval(thisv.localToGlobal(std::get<0>(args)));
     }
 
     void fairygui_GObject_globalToLocal(fairygui::GObject &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 1)
-            argv.rval(thisv.globalToLocal(argv.get<cocos2d::Rect>(0)));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        std::tuple<cocos2d::Rect> args;
+        if (argv.get(args))
+            argv.rval(thisv.globalToLocal(std::get<0>(args)));
     }
 
     void fairygui_GObject_setEnabled(fairygui::GObject &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 1)
+        std::tuple<bool> args;
+        if (argv.get(args))
         {
-            bool enabled = argv.get<bool>(0);
+            bool enabled = std::get<0>(args);
             thisv.setGrayed(!enabled);
             thisv.setTouchable(enabled);
         }
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
     }
 
     void fairygui_GMovieClip_setPlaySettings(fairygui::GMovieClip &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.setPlaySettings();
+        }
         else if (argc == 1)
-            thisv.setPlaySettings(argv.get<int>(0));
+        {
+            std::tuple<int> args;
+            if (argv.get(args))
+                thisv.setPlaySettings(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.setPlaySettings(argv.get<int>(0), argv.get<int>(1));
+        {
+            std::tuple<int, int> args;
+            if (argv.get(args))
+                thisv.setPlaySettings(std::get<0>(args), std::get<1>(args));
+        }
         else if (argc == 3)
-            thisv.setPlaySettings(argv.get<int>(0), argv.get<int>(1), argv.get<int>(2));
+        {
+            std::tuple<int, int, int> args;
+            if (argv.get(args))
+                thisv.setPlaySettings(std::get<0>(args), std::get<1>(args), std::get<2>(args));
+        }
         else if (argc == 4)
-            thisv.setPlaySettings(argv.get<int>(0), argv.get<int>(1), argv.get<int>(2), argv.get<int>(3));
+        {
+            std::tuple<int, int, int, int> args;
+            if (argv.get(args))
+                thisv.setPlaySettings(std::get<0>(args), std::get<1>(args), std::get<2>(args), std::get<3>(args));
+        }
         else if (argc == 5)
-            thisv.setPlaySettings(argv.get<int>(0), argv.get<int>(1), argv.get<int>(2), argv.get<int>(3), argv.get<std::function<void()>>(4));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, int, int, int, std::function<void()>> args;
+            if (argv.get(args))
+                thisv.setPlaySettings(std::get<0>(args), std::get<1>(args), std::get<2>(args), std::get<3>(args), std::get<4>(args));
+        }
     }
 
     void fairygui_GGroup_setBoundsChangedFlag(fairygui::GGroup &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.setBoundsChangedFlag();
+        }
         else if (argc == 1)
-            thisv.setBoundsChangedFlag(argv.get<bool>(0));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<bool> args;
+            if (argv.get(args))
+                thisv.setBoundsChangedFlag(std::get<0>(args));
+        }
     }
 
     void fairygui_Transition_stop(fairygui::Transition &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.stop();
+        }
         else if (argc == 2)
-            thisv.stop(argv.get<bool>(0), argv.get<bool>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<bool, bool> args;
+            if (argv.get(args))
+                thisv.stop(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_Transition_playReverse(fairygui::Transition &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.playReverse();
+        }
         else if (argc == 1)
-            thisv.playReverse(argv.get<fairygui::Transition::PlayCompleteCallback>(0));
+        {
+            std::tuple<fairygui::Transition::PlayCompleteCallback> args;
+            if (argv.get(args))
+                thisv.playReverse(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.playReverse(argv.get<int>(0), argv.get<float>(1));
+        {
+            std::tuple<int, float> args;
+            if (argv.get(args))
+                thisv.playReverse(std::get<0>(args), std::get<1>(args));
+        }
         else if (argc == 3)
-            thisv.playReverse(argv.get<int>(0), argv.get<float>(1), argv.get<fairygui::Transition::PlayCompleteCallback>(2));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, float, fairygui::Transition::PlayCompleteCallback> args;
+            if (argv.get(args))
+                thisv.playReverse(std::get<0>(args), std::get<1>(args), std::get<2>(args));
+        }
     }
 
     void fairygui_Transition_play(fairygui::Transition &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.play();
+        }
         else if (argc == 1)
-            thisv.play(argv.get<fairygui::Transition::PlayCompleteCallback>(0));
+        {
+            std::tuple<fairygui::Transition::PlayCompleteCallback> args;
+            if (argv.get(args))
+                thisv.play(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.play(argv.get<int>(0), argv.get<float>(1));
+        {
+            std::tuple<int, float> args;
+            if (argv.get(args))
+                thisv.play(std::get<0>(args), std::get<1>(args));
+        }
         else if (argc == 3)
-            thisv.play(argv.get<int>(0), argv.get<float>(1), argv.get<fairygui::Transition::PlayCompleteCallback>(2));
+        {
+            std::tuple<int, float, fairygui::Transition::PlayCompleteCallback> args;
+            if (argv.get(args))
+                thisv.play(std::get<0>(args), std::get<1>(args), std::get<2>(args));
+        }
         else if (argc == 4)
-            thisv.play(argv.get<int>(0), argv.get<float>(1), argv.get<float>(2), argv.get<float>(3));
+        {
+            std::tuple<int, float, float, float> args;
+            if (argv.get(args))
+                thisv.play(std::get<0>(args), std::get<1>(args), std::get<2>(args), std::get<3>(args));
+        }
         else if (argc == 5)
-            thisv.play(argv.get<int>(0), argv.get<float>(1), argv.get<float>(2), argv.get<float>(3), argv.get<fairygui::Transition::PlayCompleteCallback>(4));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, float, float, float, fairygui::Transition::PlayCompleteCallback> args;
+            if (argv.get(args))
+                thisv.play(std::get<0>(args), std::get<1>(args), std::get<2>(args), std::get<3>(args), std::get<4>(args));
+        }
     }
 
     void fairygui_UIObjectFactory_newObject(std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 1)
+        do
         {
-            if (argv.is<fairygui::ObjectType>(0))
-                argv.rval(fairygui::UIObjectFactory::newObject(argv.get<fairygui::ObjectType>(0)));
-            else
-                argv.rval(fairygui::UIObjectFactory::newObject(argv.get<fairygui::PackageItem *>(0)));
-        }
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+            std::tuple<fairygui::ObjectType> args;
+            if (argv.get(args))
+            {
+                argv.rval(fairygui::UIObjectFactory::newObject(std::get<0>(args)));
+                return;
+            }
+        } while(0);
+
+        do
+        {
+            std::tuple<fairygui::PackageItem *> args;
+            if (argv.get(args))
+            {
+                argv.rval(fairygui::UIObjectFactory::newObject(std::get<0>(args)));
+                return;
+            }
+        } while(0);
     }
 
     void fairygui_ScrollPane_scrollToView(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.scrollToView(argv.get<cocos2d::Rect>(0));
+        {
+            std::tuple<cocos2d::Rect> args;
+            if (argv.get(args))
+                thisv.scrollToView(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.scrollToView(argv.get<cocos2d::Rect>(0), argv.get<bool>(1));
+        {
+            std::tuple<cocos2d::Rect, bool> args;
+            if (argv.get(args))
+                thisv.scrollToView(std::get<0>(args), std::get<1>(args));
+        }
         else if (argc == 3)
-            thisv.scrollToView(argv.get<cocos2d::Rect>(0), argv.get<bool>(1), argv.get<bool>(2));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<cocos2d::Rect, bool, bool> args;
+            if (argv.get(args))
+                thisv.scrollToView(std::get<0>(args), std::get<1>(args), std::get<2>(args));
+        }
     }
 
     void fairygui_ScrollPane_setPosX(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.setPosX(argv.get<float>(0));
+        {
+            std::tuple<float> args;
+            if (argv.get(args))
+                thisv.setPosX(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.setPosX(argv.get<float>(0), argv.get<bool>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<float, bool> args;
+            if (argv.get(args))
+                thisv.setPosX(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_ScrollPane_setPageY(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.setPageY(argv.get<int>(0));
+        {
+            std::tuple<int> args;
+            if (argv.get(args))
+                thisv.setPageY(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.setPageY(argv.get<int>(0), argv.get<bool>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, bool> args;
+            if (argv.get(args))
+                thisv.setPageY(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_ScrollPane_scrollTop(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.scrollTop();
+        }
         else if (argc == 1)
-            thisv.scrollTop(argv.get<bool>(0));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<bool> args;
+            if (argv.get(args))
+                thisv.scrollTop(std::get<0>(args));
+        }
     }
 
     void fairygui_ScrollPane_scrollBottom(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.scrollBottom();
+        }
         else if (argc == 1)
-            thisv.scrollBottom(argv.get<bool>(0));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<bool> args;
+            if (argv.get(args))
+                thisv.scrollBottom(std::get<0>(args));
+        }
     }
 
     void fairygui_ScrollPane_scrollDown(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.scrollDown();
+        }
         else if (argc == 1)
-            thisv.scrollDown(argv.get<float>(0));
+        {
+            std::tuple<float> args;
+            if (argv.get(args))
+                thisv.scrollDown(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.scrollDown(argv.get<float>(0), argv.get<bool>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<float, bool> args;
+            if (argv.get(args))
+                thisv.scrollDown(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_ScrollPane_scrollLeft(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.scrollLeft();
+        }
         else if (argc == 1)
-            thisv.scrollLeft(argv.get<float>(0));
+        {
+            std::tuple<float> args;
+            if (argv.get(args))
+                thisv.scrollLeft(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.scrollLeft(argv.get<float>(0), argv.get<bool>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<float, bool> args;
+            if (argv.get(args))
+                thisv.scrollLeft(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_ScrollPane_setPageX(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.setPageX(argv.get<int>(0));
+        {
+            std::tuple<int> args;
+            if (argv.get(args))
+                thisv.setPageX(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.setPageX(argv.get<int>(0), argv.get<bool>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, bool> args;
+            if (argv.get(args))
+                thisv.setPageX(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_ScrollPane_scrollUp(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.scrollUp();
+        }
         else if (argc == 1)
-            thisv.scrollUp(argv.get<float>(0));
+        {
+            std::tuple<float> args;
+            if (argv.get(args))
+                thisv.scrollUp(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.scrollUp(argv.get<float>(0), argv.get<bool>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<float, bool> args;
+            if (argv.get(args))
+                thisv.scrollUp(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_ScrollPane_setPercX(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.setPercX(argv.get<float>(0));
+        {
+            std::tuple<float> args;
+            if (argv.get(args))
+                thisv.setPercX(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.setPercX(argv.get<float>(0), argv.get<bool>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<float, bool> args;
+            if (argv.get(args))
+                thisv.setPercX(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_ScrollPane_setPercY(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.setPercY(argv.get<float>(0));
+        {
+            std::tuple<float> args;
+            if (argv.get(args))
+                thisv.setPercY(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.setPercY(argv.get<float>(0), argv.get<bool>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<float, bool> args;
+            if (argv.get(args))
+                thisv.setPercY(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_ScrollPane_scrollRight(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.scrollRight();
+        }
         else if (argc == 1)
-            thisv.scrollRight(argv.get<float>(0));
+        {
+            std::tuple<float> args;
+            if (argv.get(args))
+                thisv.scrollRight(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.scrollRight(argv.get<float>(0), argv.get<bool>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<float, bool> args;
+            if (argv.get(args))
+                thisv.scrollRight(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_ScrollPane_setPosY(fairygui::ScrollPane &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.setPosY(argv.get<float>(0));
+        {
+            std::tuple<float> args;
+            if (argv.get(args))
+                thisv.setPosY(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.setPosY(argv.get<float>(0), argv.get<bool>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<float, bool> args;
+            if (argv.get(args))
+                thisv.setPosY(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_GComponent_removeChildren(fairygui::GComponent &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.removeChildren();
+        }
         else if (argc == 2)
-            thisv.removeChildren(argv.get<int>(0), argv.get<int>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, int> args;
+            if (argv.get(args))
+                thisv.removeChildren(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_GComponent_setMask(fairygui::GComponent &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.setMask(argv.get<cocos2d::Node *>(0));
+        {
+            std::tuple<cocos2d::Node*> args;
+            if (argv.get(args))
+                thisv.setMask(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.setMask(argv.get<cocos2d::Node *>(0), argv.get<bool>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<cocos2d::Node*, bool> args;
+            if (argv.get(args))
+                thisv.setMask(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_GList_setVirtual(fairygui::GList &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 0)
-            thisv.setVirtual();
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        thisv.setVirtual();
     }
 
     void fairygui_GList_resizeToFit(fairygui::GList &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.resizeToFit(argv.get<int>(0));
+        {
+            std::tuple<int> args;
+            if (argv.get(args))
+                thisv.resizeToFit(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.resizeToFit(argv.get<int>(0), argv.get<int>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, int> args;
+            if (argv.get(args))
+                thisv.resizeToFit(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_GList_addItemFromPool(fairygui::GList &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             argv.rval(thisv.addItemFromPool());
+        }
         else if (argc == 1)
-            argv.rval(thisv.addItemFromPool(argv.get<std::string>(0)));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<std::string> args;
+            if (argv.get(args))
+                argv.rval(thisv.addItemFromPool(std::get<0>(args)));
+        }
     }
 
     void fairygui_GList_removeChildrenToPool(fairygui::GList &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.removeChildrenToPool();
+        }
         else if (argc == 2)
-            thisv.removeChildrenToPool(argv.get<int>(0), argv.get<int>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, int> args;
+            if (argv.get(args))
+                thisv.removeChildrenToPool(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_GList_getSelection(fairygui::GList &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 0)
-        {
-            std::vector<int> selection;
-            thisv.getSelection(selection);
-			argv.rval(selection);
-        }
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        std::vector<int> selection;
+        thisv.getSelection(selection);
+        argv.rval(selection);
     }
-
-    
 
     void fairygui_GList_scrollToView(fairygui::GList &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.scrollToView(argv.get<int>(0));
+        {
+            std::tuple<int> args;
+            if (argv.get(args))
+                thisv.scrollToView(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.scrollToView(argv.get<int>(0), argv.get<bool>(1));
+        {
+            std::tuple<int, bool> args;
+            if (argv.get(args))
+                thisv.scrollToView(std::get<0>(args), std::get<1>(args));
+        }
         else if (argc == 3)
-            thisv.scrollToView(argv.get<int>(0), argv.get<bool>(1), argv.get<bool>(2));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, bool, bool> args;
+            if (argv.get(args))
+                thisv.scrollToView(std::get<0>(args), std::get<1>(args), std::get<2>(args));
+        }
     }
 
     void fairygui_GList_getFromPool(fairygui::GList &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             argv.rval(thisv.getFromPool());
+        }
         else if (argc == 1)
-            argv.rval(thisv.getFromPool(argv.get<std::string>(0)));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<std::string> args;
+            if (argv.get(args))
+                argv.rval(thisv.getFromPool(std::get<0>(args)));
+        }
     }
 
     void fairygui_GComboBox_setItems(fairygui::GComboBox &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 1)
+        std::tuple<std::vector<std::string>> args;
+        if (argv.get(args))
         {
-            const std::vector<std::string> &arg0 = argv.get<std::vector<std::string>>(0);
+            const std::vector<std::string> &arg0 = std::get<0>(args);
             std::vector<std::string> &items = thisv.getItems();
             items.clear();
             items.assign(arg0.begin(), arg0.end());
         }
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
     }
 
     void fairygui_GComboBox_setIcons(fairygui::GComboBox &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 1)
+        std::tuple<std::vector<std::string>> args;
+        if (argv.get(args))
         {
-            const std::vector<std::string> &arg0 = argv.get<std::vector<std::string>>(0);
+            const std::vector<std::string> &arg0 = std::get<0>(args);
             std::vector<std::string> &icons = thisv.getIcons();
             icons.clear();
             icons.assign(arg0.begin(), arg0.end());
         }
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
     }
 
     void fairygui_GComboBox_setValues(fairygui::GComboBox &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 1)
+        std::tuple<std::vector<std::string>> args;
+        if (argv.get(args))
         {
-            const std::vector<std::string> &arg0 = argv.get<std::vector<std::string>>(0);
+            const std::vector<std::string> &arg0 = std::get<0>(args);
             std::vector<std::string> &values = thisv.getValues();
             values.clear();
             values.assign(arg0.begin(), arg0.end());
         }
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
     }
 
     void fairygui_Window_closeModalWait(fairygui::Window &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             argv.rval(thisv.closeModalWait());
+        }
         else if (argc == 1)
-            argv.rval(thisv.closeModalWait(argv.get<int>(0)));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int> args;
+            if (argv.get(args))
+                argv.rval(thisv.closeModalWait(std::get<0>(args)));
+        }
     }
 
     void fairygui_Window_showModalWait(fairygui::Window &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.showModalWait();
+        }
         else if (argc == 1)
-            thisv.showModalWait(argv.get<int>(0));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int> args;
+            if (argv.get(args))
+                thisv.showModalWait(std::get<0>(args));
+        }
     }
 
     void fairygui_GRoot_hidePopup(fairygui::GRoot &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.hidePopup();
+        }
         else if (argc == 1)
-            thisv.hidePopup(argv.get<fairygui::GObject *>(0));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<fairygui::GObject*> args;
+            if (argv.get(args))
+                thisv.hidePopup(std::get<0>(args));
+        }
     }
 
     void fairygui_GRoot_showPopup(fairygui::GRoot &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.showPopup(argv.get<fairygui::GObject *>(0));
+        {
+            std::tuple<fairygui::GObject*> args;
+            if (argv.get(args))
+                thisv.showPopup(std::get<0>(args));
+        }
         else if (argc == 3)
-            thisv.showPopup(argv.get<fairygui::GObject *>(0), argv.get<fairygui::GObject *>(1), argv.get<fairygui::PopupDirection>(2));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<fairygui::GObject*, fairygui::GObject*, fairygui::PopupDirection> args;
+            if (argv.get(args))
+                thisv.showPopup(std::get<0>(args), std::get<1>(args), std::get<2>(args));
+        }
     }
 
     void fairygui_GRoot_togglePopup(fairygui::GRoot &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.togglePopup(argv.get<fairygui::GObject *>(0));
+        {
+            std::tuple<fairygui::GObject*> args;
+            if (argv.get(args))
+                thisv.togglePopup(std::get<0>(args));
+        }
         else if (argc == 3)
-            thisv.togglePopup(argv.get<fairygui::GObject *>(0), argv.get<fairygui::GObject *>(1), argv.get<fairygui::PopupDirection>(2));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<fairygui::GObject*, fairygui::GObject*, fairygui::PopupDirection> args;
+            if (argv.get(args))
+                thisv.togglePopup(std::get<0>(args), std::get<1>(args), std::get<2>(args));
+        }
     }
 
     void fairygui_GRoot_playSound(fairygui::GRoot &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.playSound(argv.get<std::string>(0));
+        {
+            std::tuple<std::string> args;
+            if (argv.get(args))
+                thisv.playSound(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.playSound(argv.get<std::string>(0), argv.get<float>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<std::string, float> args;
+            if (argv.get(args))
+                thisv.playSound(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_GRoot_create(std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            argv.rval(fairygui::GRoot::create(argv.get<cocos2d::Scene *>(0)));
+        {
+            std::tuple<cocos2d::Scene*> args;
+            if (argv.get(args))
+                argv.rval(fairygui::GRoot::create(std::get<0>(args)));
+        }
         else if (argc == 2)
-            argv.rval(fairygui::GRoot::create(argv.get<cocos2d::Scene *>(0), argv.get<int>(1)));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<cocos2d::Scene*, int> args;
+            if (argv.get(args))
+                argv.rval(fairygui::GRoot::create(std::get<0>(args), std::get<1>(args)));
+        }
     }
 
     void fairygui_EventContext_getData(fairygui::EventContext &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 0)
-            argv.rval((cocos2d::Ref *)thisv.getData());
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        argv.rval((cocos2d::Ref *)thisv.getData());
     }
 
     void fairygui_UIPackage_createObject(std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 2)
-            argv.rval(fairygui::UIPackage::createObject(argv.get<std::string>(0), argv.get<std::string>(1)));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        std::tuple<std::string, std::string> args;
+        if (argv.get(args))
+            argv.rval(fairygui::UIPackage::createObject(std::get<0>(args), std::get<1>(args)));
     }
 
     void fairygui_PopupMenu_show(fairygui::PopupMenu &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.show();
+        }
         else if (argc == 2)
-            thisv.show(argv.get<fairygui::GObject *>(0), argv.get<fairygui::PopupDirection>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<fairygui::GObject*, fairygui::PopupDirection> args;
+            if (argv.get(args))
+                thisv.show(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_PopupMenu_create(std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             argv.rval(fairygui::PopupMenu::create());
+        }
         else if (argc == 1)
-            argv.rval(fairygui::PopupMenu::create(argv.get<std::string>(0)));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<std::string> args;
+            if (argv.get(args))
+                argv.rval(fairygui::PopupMenu::create(std::get<0>(args)));
+        }
     }
 
     void fairygui_DragDropManager_startDrag(fairygui::DragDropManager &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 1)
-            thisv.startDrag(argv.get<std::string>(0));
+        {
+            std::tuple<std::string> args;
+            if (argv.get(args))
+                thisv.startDrag(std::get<0>(args));
+        }
         else if (argc == 2)
-            thisv.startDrag(argv.get<std::string>(0), argv.get<cocos2d::Value>(1));
+        {
+            std::tuple<std::string, cocos2d::Value> args;
+            if (argv.get(args))
+                thisv.startDrag(std::get<0>(args), std::get<1>(args));
+        }
         else if (argc == 3)
-            thisv.startDrag(argv.get<std::string>(0), argv.get<cocos2d::Value>(1), argv.get<int>(2));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<std::string, cocos2d::Value, int> args;
+            if (argv.get(args))
+                thisv.startDrag(std::get<0>(args), std::get<1>(args), std::get<2>(args));
+        }
     }
 
     void fairygui_HtmlObject_getElementAttrs(fairygui::HtmlObject &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 0)
-            argv.rval(thisv.getElement()->attrs);
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        argv.rval(thisv.getElement()->attrs);
     }
 
     void fairygui_HtmlObject_clearStaticPools(std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 0)
-        {
-            fairygui::HtmlObject::objectPool.clear();
-            fairygui::HtmlObject::loaderPool.clear();
-        }
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        fairygui::HtmlObject::objectPool.clear();
+        fairygui::HtmlObject::loaderPool.clear();
     }
 
     void fairygui_GTree_getSelectedNodes(fairygui::GTree &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 0)
-        {
-            std::vector<fairygui::GTreeNode *> nodes;
-            thisv.getSelectedNodes(nodes);
-            argv.rval(nodes);
-        }
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        std::vector<fairygui::GTreeNode *> nodes;
+        thisv.getSelectedNodes(nodes);
+        argv.rval(nodes);
     }
 
     void fairygui_GTreeNode_removeChildren(fairygui::GTreeNode &thisv, std::size_t argc, bind::Argv &argv)
     {
         if (argc == 0)
+        {
             thisv.removeChildren();
+        }
         else if (argc == 2)
-            thisv.removeChildren(argv.get<int>(0), argv.get<int>(1));
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        {
+            std::tuple<int, int> args;
+            if (argv.get(args))
+                thisv.removeChildren(std::get<0>(args), std::get<1>(args));
+        }
     }
 
     void fairygui_TextFormat_setFormat(fairygui::TextFormat &thisv, std::size_t argc, bind::Argv &argv)
     {
-        if (argc == 1)
-        {
-            fairygui::TextFormat *format = argv.get<fairygui::TextFormat *>(0);
-            thisv.setFormat(*format);
-        }
-        else
-            bind::reportError(CCBIND_INVALID_ARG_CNT);
+        std::tuple<fairygui::TextFormat *> args;
+        if (argv.get(args))
+            thisv.setFormat(*std::get<0>(args));
     }
 }
 
