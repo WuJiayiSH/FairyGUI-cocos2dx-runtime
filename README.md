@@ -20,5 +20,5 @@ Register lua bindings in AppDelegate.cpp(Lua specific):
 You're good to go but might need this line to get UI music work(Lua specific):
 
     fairygui.UIConfig.onMusicCallback = function(path)
-        audio.playEffectSync(path)
+        audio.playSound(path)
     end
