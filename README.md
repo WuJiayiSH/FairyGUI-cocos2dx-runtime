@@ -6,10 +6,9 @@ Install in cocos2d-x project:
 
 Update your CMakeLists.txt:
 
-    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/frameworks/FairyGUI-cocos2dx-runtime)
-    include(${CMAKE_CURRENT_SOURCE_DIR}/frameworks/FairyGUI-cocos2dx-runtime/CMakeLists.txt)
-    set(GAME_HEADER ${GAME_HEADER} ${FAIRYGUI_HEADER})
-    set(GAME_SOURCE ${GAME_SOURCE} ${FAIRYGUI_SRC})
+    add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/frameworks/FairyGUI-cocos2dx-runtime)
+    target_link_libraries(${APP_NAME} fairygui_runtime)
+    target_include_directories(${APP_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/frameworks/FairyGUI-cocos2dx-runtime)
 
 Register lua bindings in AppDelegate.cpp(Lua specific):
 
