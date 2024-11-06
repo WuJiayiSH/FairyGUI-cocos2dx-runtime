@@ -6,7 +6,9 @@
 #include "utils/ByteBuffer.h"
 #include "utils/ToolSet.h"
 
+#if CC_USE_SPINE
 #include "spine/spine-cocos2dx.h"
+#endif
 
 NS_FGUI_BEGIN
 USING_NS_CC;
@@ -192,6 +194,7 @@ void GLoader3D::loadFromPackage()
         _contentItem = _contentItem->getHighResolution();
         _contentItem->load();
 
+#if CC_USE_SPINE
         if (_contentItem->type == PackageItemType::SPINE)
         {
             size_t pos = _contentItem->file.find_last_of('.');
@@ -213,6 +216,7 @@ void GLoader3D::loadFromPackage()
             updateLayout();
         }
         else
+#endif
         {
             if (_autoSize)
                 setSize(_contentItem->width, _contentItem->height);
@@ -231,6 +235,7 @@ void GLoader3D::onChange()
 
 void GLoader3D::onChangeSpine()
 {
+#if CC_USE_SPINE
     spine::SkeletonAnimation* skeletonAni = dynamic_cast<spine::SkeletonAnimation*>(_content);
     if (skeletonAni == nullptr)
         return;
@@ -259,6 +264,7 @@ void GLoader3D::onChangeSpine()
         spAnimationState_clearTrack(state, 0);
 
     skeletonAni->setSkin(_skinName);
+#endif
 }
 
 void GLoader3D::loadExternal()

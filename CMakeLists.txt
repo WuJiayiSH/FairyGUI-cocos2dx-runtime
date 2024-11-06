@@ -32,5 +32,6 @@ if(NOT BUILD_LUA_LIBS)
 endif()
 
 add_library(${LIB_NAME} STATIC ${SOURCE} ${HEADER})
+target_compile_definitions(${LIB_NAME} PRIVATE CC_USE_SPINE=$<BOOL:${BUILD_EDITOR_SPINE}>)
 add_dependencies(${LIB_NAME} cocos2d)
 use_cocos2dx_compile_define(${LIB_NAME})
